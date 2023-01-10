@@ -1,0 +1,34 @@
+:root {
+  --highlightColor: rgb(49, 152, 125);
+  --lightAccentColor: rgb(231, 231, 231);
+  --lightBackgroundColor: rgb(246, 246, 246);
+}
+
+body {
+  margin: 0;
+}
+
+#content {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 350px 4fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    'header header'
+    'sidebar main';
+}
+
+.header {
+  grid-area: header;
+  background-color: var(--highlightColor);
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--lightAccentColor);
+}
+
+.main {
+  grid-area: main;
+  background-color: var(--lightBackgroundColor);
+}
