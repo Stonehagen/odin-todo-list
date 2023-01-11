@@ -1,7 +1,8 @@
-import { projectlist, getDefaultProject, Project } from './project';
+import { projectlist } from './project';
 
 const addProjectButton = (htmlContainer) => {
   const htmlAddProjectBtn = document.createElement('button');
+  htmlAddProjectBtn.id = 'add-project-btn';
   htmlAddProjectBtn.innerHTML = 'Add Project';
   htmlContainer.appendChild(htmlAddProjectBtn);
 };
@@ -18,10 +19,6 @@ export const loadTemplate = (htmlContainer) => {
   addProjectButton(htmlContainer.querySelector('.add-project'));
 };
 
-export const loadDefaultProject = () => {
-  projectlist.addProject(getDefaultProject());
-};
-
 export const displayProjectlist = (htmlContainerClass) => {
   const htmlSidebar = document.querySelector(htmlContainerClass);
 
@@ -36,4 +33,22 @@ export const displayProjectlist = (htmlContainerClass) => {
   });
 
   htmlSidebar.appendChild(htmlProjectList);
+};
+
+export const showAddProjectForm = (htmlContainer) => {
+  const form = document.createElement('form');
+
+  const titleInput = document.createElement('input');
+  titleInput.placeholder = 'Project Title...';
+  form.appendChild(titleInput);
+
+  const btnSubmit = document.createElement('button');
+  btnSubmit.innerHTML = 'Add Project';
+  form.appendChild(btnSubmit);
+
+  const htmlAddProjectDiv = document.createElement('div');
+  htmlAddProjectDiv.classList.add('add-project-div');
+  htmlAddProjectDiv.appendChild(form);
+
+  htmlContainer.appendChild(htmlAddProjectDiv);
 };
