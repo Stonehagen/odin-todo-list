@@ -27,31 +27,29 @@ export class Project {
 
   #id;
 
-  constructor(title, description, dueDate) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
+  #title;
+
+  constructor(title) {
+    this.#title = title;
     this.#id = Project.#count;
     Project.incrementCount();
   }
 
-  static incrementCount = () => {
+  static #incrementCount = () => {
     Project.#count += 1;
   };
 
-  getId() {
+  get id() {
     return this.#id;
   }
 
-  setTitle(title) {
-    this.title = title;
+  set title(title) {
+    this.#title = title;
   }
 
-  setDescription(description) {
-    this.description = description;
-  }
-
-  setDueDate(dueDate) {
-    this.dueDate = dueDate;
+  get title() {
+    return this.#title;
   }
 }
+
+export const defaultProject = () => new Project('Today');
