@@ -1,5 +1,11 @@
 import { projectlist, getDefaultProject, Project } from './project';
 
+const addProjectButton = (htmlContainer) => {
+  const htmlAddProjectBtn = document.createElement('button');
+  htmlAddProjectBtn.innerHTML = 'Add Project';
+  htmlContainer.appendChild(htmlAddProjectBtn);
+};
+
 export const loadTemplate = (htmlContainer) => {
   const htmlClasses = ['header', 'sidebar', 'add-project', 'main'];
 
@@ -9,10 +15,7 @@ export const loadTemplate = (htmlContainer) => {
     htmlContainer.appendChild(newDiv);
   });
 
-  const htmlAddProjectBtn = document.createElement('button');
-  htmlAddProjectBtn.innerHTML = 'Add Project';
-  const htmlAddProjectDiv = htmlContainer.querySelector('.add-project');
-  htmlAddProjectDiv.appendChild(htmlAddProjectBtn);
+  addProjectButton(htmlContainer.querySelector('.add-project'));
 };
 
 export const loadDefaultProject = () => {
