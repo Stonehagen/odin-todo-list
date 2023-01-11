@@ -9,7 +9,7 @@ export const projectList = (() => {
 
   const removeProject = (project, index) => {
     projects.forEach((p) => {
-      if (p.title === project.title) {
+      if (p.getId() === project.getId()) {
         projects.splice(index, index);
       }
     });
@@ -23,10 +23,24 @@ export const projectList = (() => {
 })();
 
 export class Project {
+  static #count = 0;
+
+  #id;
+
   constructor(title, description, dueDate) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
+    this.#id = Project.#count;
+    Project.incrementCount();
+  }
+
+  static incrementCount = () => {
+    Project.#count += 1;
+  };
+
+  getId() {
+    return this.#id;
   }
 
   setTitle(title) {
