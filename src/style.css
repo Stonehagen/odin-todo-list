@@ -2,6 +2,7 @@
   --highlightColor: rgb(49, 152, 125);
   --lightAccentColor: rgb(231, 231, 231);
   --lightBackgroundColor: rgb(246, 246, 246);
+  --darkHighlightColor: rgb(20, 115, 90);
 }
 
 body {
@@ -12,10 +13,11 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 350px 4fr;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 60px 1fr 60px;
   grid-template-areas:
     'header header'
-    'sidebar main';
+    'sidebar main'
+    'add-project main';
 }
 
 .header {
@@ -27,6 +29,30 @@ body {
   grid-area: sidebar;
   background-color: var(--lightAccentColor);
 }
+
+.add-project {
+  grid-area: add-project;
+  background-color: var(--lightAccentColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-project button {
+  width: 200px;
+  height: 50px;
+  background-color: var(--highlightColor);
+  border-radius: 10px;
+  color: white;
+  font-size: 1.8em;
+  border: 1px solid rgb(36, 55, 47);
+}
+
+.add-project button:hover {
+  background-color: var(--darkHighlightColor);
+  cursor: pointer;
+}
+
 
 .main {
   grid-area: main;

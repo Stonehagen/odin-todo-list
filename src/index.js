@@ -5,4 +5,4 @@ const contentContainer = document.querySelector('#content');
 
 loadTemplate(contentContainer);
 loadDefaultProject();
-displayProjectlist();
+displayProjectlist('.sidebar');
