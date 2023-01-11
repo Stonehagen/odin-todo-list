@@ -1,4 +1,4 @@
-export const projectList = (() => {
+export const projectlist = (() => {
   const projects = [];
 
   const getProjects = () => projects;
@@ -32,7 +32,7 @@ export class Project {
   constructor(title) {
     this.#title = title;
     this.#id = Project.#count;
-    Project.incrementCount();
+    Project.#incrementCount();
   }
 
   static #incrementCount = () => {
@@ -52,4 +52,4 @@ export class Project {
   }
 }
 
-export const defaultProject = () => new Project('Today');
+export const getDefaultProject = () => new Project('Today');

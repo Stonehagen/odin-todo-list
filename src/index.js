@@ -1,7 +1,8 @@
 import './style.css';
-import pageLoad from './modules/pageLoad';
-import { projectList, Project } from './modules/project';
+import { loadTemplate, loadDefaultProject, displayProjectlist } from './modules/pageLoad';
 
 const contentContainer = document.querySelector('#content');
 
-pageLoad(contentContainer);
+loadTemplate(contentContainer);
+loadDefaultProject();
+displayProjectlist();
