@@ -1,4 +1,5 @@
-import { showAddProjectForm, closePopup } from './pageLoad';
+import { showAddProjectForm, displayProjectlist, closePopup } from './pageLoad';
+import { newProject } from './project';
 
 export const addProjectButtonEl = (htmlContainer) => {
   const btn = document.querySelector('#add-new-project-btn');
@@ -6,6 +7,9 @@ export const addProjectButtonEl = (htmlContainer) => {
     'click',
     (e) => {
       e.preventDefault();
+      const titleInput = htmlContainer.querySelector('#add-project-title');
+      newProject(titleInput.value);
+      displayProjectlist('.sidebar');
       closePopup();
     },
     { once: true },

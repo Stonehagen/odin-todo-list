@@ -22,6 +22,7 @@ export const loadTemplate = (htmlContainer) => {
 
 export const displayProjectlist = (htmlContainerClass) => {
   const htmlSidebar = document.querySelector(htmlContainerClass);
+  htmlSidebar.innerHTML = '';
 
   const htmlProjectList = document.createElement('ul');
   htmlProjectList.classList.add('project-list');
@@ -40,6 +41,7 @@ export const showAddProjectForm = (htmlContainer) => {
   const form = document.createElement('form');
 
   const titleInput = document.createElement('input');
+  titleInput.id = 'add-project-title';
   titleInput.placeholder = 'Project Title...';
   form.appendChild(titleInput);
 

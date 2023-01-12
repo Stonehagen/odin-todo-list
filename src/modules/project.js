@@ -52,6 +52,6 @@ export class Project {
   }
 }
 
-export const loadDefaultProject = () => {
-  projectlist.addProject(new Project('Today'));
+export const newProject = (title) => {
+  projectlist.addProject(new Project(title));
 };

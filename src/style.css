@@ -83,6 +83,7 @@ button:hover {
   background-color: var(--darkAccentColor);
   animation: fadeIn 0.2s;
   box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.4);
+  z-index: 100;
 }
 
 .add-project-div form {
