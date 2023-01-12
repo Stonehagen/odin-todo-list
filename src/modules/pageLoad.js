@@ -1,16 +1,16 @@
 import { projectlist } from './project';
 
-const addProjectButton = (htmlContainer) => {
-  const htmlAddProjectBtn = document.createElement('button');
-  htmlAddProjectBtn.id = 'add-project-btn';
-  htmlAddProjectBtn.innerHTML = 'Add Project';
-  htmlContainer.appendChild(htmlAddProjectBtn);
+const addTaskButton = (htmlContainer, htmlclass, innerhtml) => {
+  const htmlBtn = document.createElement('button');
+  htmlBtn.id = htmlclass;
+  htmlBtn.innerHTML = innerhtml;
+  htmlContainer.appendChild(htmlBtn);
 };
 
 export const loadTemplate = (htmlContainer) => {
   const templateContainer = htmlContainer;
   templateContainer.innerHTML = '';
-  const htmlClasses = ['header', 'sidebar', 'add-project', 'main'];
+  const htmlClasses = ['header', 'sidebar', 'add-project', 'main', 'add-task'];
 
   htmlClasses.forEach((htmlClass) => {
     const newDiv = document.createElement('div');
@@ -18,10 +18,19 @@ export const loadTemplate = (htmlContainer) => {
     templateContainer.appendChild(newDiv);
   });
 
-  addProjectButton(htmlContainer.querySelector('.add-project'));
+  addTaskButton(
+    htmlContainer.querySelector('.add-project'),
+    'add-project-btn',
+    '<strong>+</strong> Add project',
+  );
+  addTaskButton(
+    htmlContainer.querySelector('.add-task'),
+    'add-task-btn',
+    '<strong>+</strong> Add task',
+  );
 };
 
-export const displayProjectlist = (htmlContainerClass) => {
+export const displayProjectlist = (htmlContainerClass, divEl) => {
   const htmlSidebar = document.querySelector(htmlContainerClass);
   htmlSidebar.innerHTML = '';
 
@@ -31,7 +40,9 @@ export const displayProjectlist = (htmlContainerClass) => {
   projectlist.getProjects().forEach((project) => {
     const htmlProject = document.createElement('li');
     htmlProject.classList.add('project');
+    htmlProject.id = `project-${project.id}`;
     htmlProject.innerHTML = project.title;
+    divEl(htmlProject);
     htmlProjectList.appendChild(htmlProject);
   });
 
@@ -64,4 +75,14 @@ export const showAddProjectForm = (htmlContainer) => {
 
 export const closePopup = () => {
   document.querySelector('.background-popup').remove();
+};
+
+export const setActiveProject = (id) => {
+  const htmlProjects = document.querySelectorAll('.project');
+  htmlProjects.forEach((project) => {
+    project.classList.remove('active-project');
+    if (project.id === id) {
+      project.classList.add('active-project');
+    }
+  });
 };

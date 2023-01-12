@@ -1,5 +1,17 @@
-import { showAddProjectForm, displayProjectlist, closePopup } from './pageLoad';
+import {
+  showAddProjectForm,
+  displayProjectlist,
+  closePopup,
+  setActiveProject,
+} from './pageLoad';
 import { newProject } from './project';
+
+export const projectListItemEl = (projectListItem) => {
+  projectListItem.addEventListener('click', (e) => {
+    const projectId = e.target.id;
+    setActiveProject(projectId);
+  });
+};
 
 export const addProjectButtonEl = (htmlContainer) => {
   const btn = document.querySelector('#add-new-project-btn');
@@ -9,7 +21,7 @@ export const addProjectButtonEl = (htmlContainer) => {
       e.preventDefault();
       const titleInput = htmlContainer.querySelector('#add-project-title');
       newProject(titleInput.value);
-      displayProjectlist('.sidebar');
+      displayProjectlist('.sidebar', projectListItemEl);
       closePopup();
     },
     { once: true },

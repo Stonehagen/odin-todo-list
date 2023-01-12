@@ -1,11 +1,16 @@
 :root {
   --highlightColor: rgb(49, 152, 125);
-  --lightAccentColor: rgb(231, 231, 231);
-  --darkAccentColor: rgb(202, 202, 202);
+  --lightAccentColor: rgb(235, 235, 235);
+  --darkAccentColor: rgb(220, 220, 220);
   --lightBackgroundColor: rgb(246, 246, 246);
   --darkHighlightColor: rgb(20, 115, 90);
   --borderColor: rgb(36, 55, 47);
+  --darkTextColor: rgb(80, 80, 80);
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--darkTextColor);
 }
+
 
 body {
   margin: 0;
@@ -32,7 +37,7 @@ button:hover {
   grid-template-areas:
     'header header'
     'sidebar main'
-    'add-project main';
+    'add-project add-task';
 }
 
 .header {
@@ -44,6 +49,31 @@ button:hover {
   grid-area: sidebar;
   background-color: var(--lightAccentColor);
   box-shadow: inset 0px 5px 2px -3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.project-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  gap: 5px;
+}
+
+.project {
+  border-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.project:hover {
+  background-color: var(--darkAccentColor);
+  cursor: pointer;
+}
+
+.active-project {
+  background-color: var(--darkAccentColor);
 }
 
 .add-project {
@@ -62,8 +92,21 @@ button:hover {
 .main {
   grid-area: main;
   background-color: var(--lightBackgroundColor);
-  z-index: -1;
   box-shadow: inset 5px 5px 2px -3px rgba(0, 0, 0, 0.1);
+}
+
+.add-task {
+  grid-area: add-task;
+  background-color: var(--lightBackgroundColor);
+  box-shadow: inset 5px 0px 2px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task button {
+  width: 100px;
+  height: 35px;
 }
 
 .background-popup {
