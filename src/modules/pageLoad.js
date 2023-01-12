@@ -8,6 +8,7 @@ const addProjectButton = (htmlContainer) => {
 };
 
 export const loadTemplate = (htmlContainer) => {
+  htmlContainer.innerHTML = '';
   const htmlClasses = ['header', 'sidebar', 'add-project', 'main'];
 
   htmlClasses.forEach((htmlClass) => {
@@ -43,6 +44,7 @@ export const showAddProjectForm = (htmlContainer) => {
   form.appendChild(titleInput);
 
   const btnSubmit = document.createElement('button');
+  btnSubmit.id = 'add-new-project-btn';
   btnSubmit.innerHTML = 'Add Project';
   form.appendChild(btnSubmit);
 
@@ -50,5 +52,13 @@ export const showAddProjectForm = (htmlContainer) => {
   htmlAddProjectDiv.classList.add('add-project-div');
   htmlAddProjectDiv.appendChild(form);
 
-  htmlContainer.appendChild(htmlAddProjectDiv);
+  const backgroundDiv = document.createElement('div');
+  backgroundDiv.classList.add('background-popup');
+  backgroundDiv.appendChild(htmlAddProjectDiv);
+
+  htmlContainer.appendChild(backgroundDiv);
+};
+
+export const closePopup = () => {
+  document.querySelector('.background-popup').remove();
 };
