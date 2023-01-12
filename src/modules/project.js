@@ -1,5 +1,6 @@
 export const projectlist = (() => {
   const projects = [];
+  let activeProject = 0;
 
   const getProjects = () => projects;
 
@@ -15,10 +16,23 @@ export const projectlist = (() => {
     });
   };
 
+  const setActiveProject = (id) => {
+    activeProject = +id;
+  };
+
+  const getActiveProject = () => activeProject;
+
+  const getActiceProjectObject = () =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    projects.find((project) => project.id === activeProject);
+
   return {
     getProjects,
     addProject,
     removeProject,
+    setActiveProject,
+    getActiveProject,
+    getActiceProjectObject,
   };
 })();
 
@@ -28,6 +42,8 @@ export class Project {
   #id;
 
   #title;
+
+  #tasks = [];
 
   constructor(title) {
     this.title = title;
@@ -53,6 +69,14 @@ export class Project {
 
   get title() {
     return this.#title;
+  }
+
+  get tasks() {
+    return this.#tasks;
+  }
+
+  addTask(task) {
+    this.#tasks.push(task);
   }
 }
 

@@ -11,7 +11,6 @@
   color: var(--darkTextColor);
 }
 
-
 body {
   margin: 0;
 }
@@ -27,6 +26,12 @@ button:hover {
   background-color: var(--highlightColor);
   color: white;
   cursor: pointer;
+}
+
+input {
+  border-radius: 10px;
+  padding: 0 10px;
+  border: none;
 }
 
 #content {
@@ -57,7 +62,6 @@ button:hover {
   margin: 0;
   list-style: none;
   display: grid;
-  gap: 5px;
 }
 
 .project {
@@ -117,7 +121,8 @@ button:hover {
   backdrop-filter: blur(3px);
 }
 
-.add-project-div {
+.add-project-div,
+.add-task-div {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -132,7 +137,8 @@ button:hover {
   z-index: 100;
 }
 
-.add-project-div form {
+.add-project-div form,
+.add-task-div form {
   display: grid;
   padding: 15px;
   height: 90px;
@@ -140,15 +146,10 @@ button:hover {
   gap: 15px;
 }
 
-.add-project-div button {
+.add-project-div button,
+.add-task-div button {
   width: 100px;
   justify-self: end;
-}
-
-.add-project-div input {
-  border-radius: 10px;
-  padding: 0 10px;
-  border: none;
 }
 
 @keyframes fadeIn {

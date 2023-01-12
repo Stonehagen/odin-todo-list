@@ -3,21 +3,18 @@ export default class Task {
 
   #id;
 
-  #project;
-
   #title;
 
   #description;
 
   #dueDate;
 
-  constructor(project, title, description, dueDate) {
-    this.#project = project;
+  constructor(title, description, dueDate) {
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
     this.#id = Task.#count;
-    Task.incrementCount();
+    Task.#incrementCount();
   }
 
   static #incrementCount = () => {
@@ -26,14 +23,6 @@ export default class Task {
 
   get id() {
     return this.#id;
-  }
-
-  set project(p) {
-    this.#project = p;
-  }
-
-  get project() {
-    return this.#project;
   }
 
   set title(title) {
@@ -60,3 +49,5 @@ export default class Task {
     return this.#dueDate;
   }
 }
+
+export const newTask = (title) => new Task(title, '', '');
