@@ -8,13 +8,14 @@ const addProjectButton = (htmlContainer) => {
 };
 
 export const loadTemplate = (htmlContainer) => {
-  htmlContainer.innerHTML = '';
+  const templateContainer = htmlContainer;
+  templateContainer.innerHTML = '';
   const htmlClasses = ['header', 'sidebar', 'add-project', 'main'];
 
   htmlClasses.forEach((htmlClass) => {
     const newDiv = document.createElement('div');
     newDiv.classList.add(htmlClass);
-    htmlContainer.appendChild(newDiv);
+    templateContainer.appendChild(newDiv);
   });
 
   addProjectButton(htmlContainer.querySelector('.add-project'));
