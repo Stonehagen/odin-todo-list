@@ -30,7 +30,7 @@ export class Project {
   #title;
 
   constructor(title) {
-    this.#title = title;
+    this.title = title;
     this.#id = Project.#count;
     Project.#incrementCount();
   }
@@ -44,6 +44,10 @@ export class Project {
   }
 
   set title(title) {
+    if (title === '') {
+      this.#title = 'New Project';
+      return;
+    }
     this.#title = title;
   }
 
