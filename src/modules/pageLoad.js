@@ -30,7 +30,7 @@ export const loadTemplate = (htmlContainer) => {
   );
 };
 
-export const displayProjectlist = (liEl) => {
+export const displayProjectlist = () => {
   const htmlSidebar = document.querySelector('.sidebar');
   htmlSidebar.innerHTML = '';
 
@@ -45,7 +45,6 @@ export const displayProjectlist = (liEl) => {
     }
     htmlProject.id = `project-${project.id}`;
     htmlProject.innerHTML = `${project.title} (${project.tasks.length})`;
-    liEl(htmlProject);
     htmlProjectList.appendChild(htmlProject);
   });
 
@@ -60,6 +59,7 @@ export const getTaskHtml = (task) => {
   const htmlCheckbox = document.createElement('div');
   htmlCheckbox.classList.add('task-checkbox');
   htmlCheckbox.innerHTML = '✓';
+
   htmlTask.appendChild(htmlCheckbox);
 
   const htmlTitle = document.createElement('div');
@@ -69,7 +69,7 @@ export const getTaskHtml = (task) => {
 
   const htmlDate = document.createElement('div');
   htmlDate.classList.add('task-date');
-  htmlDate.innerHTML = '01.02.23 - 10:00'; // task.dueDate
+  htmlDate.innerHTML = task.dueDate;
   htmlTask.appendChild(htmlDate);
 
   return htmlTask;
@@ -125,7 +125,19 @@ export const showAddTaskForm = (htmlContainer) => {
   const titleInput = document.createElement('input');
   titleInput.id = 'add-task-title';
   titleInput.placeholder = 'Task title...';
+  titleInput.required = true;
   form.appendChild(titleInput);
+
+  const DescriptionInput = document.createElement('textarea');
+  DescriptionInput.id = 'add-task-description';
+  DescriptionInput.placeholder = 'Description...';
+  DescriptionInput.maxLength = 1000;
+  form.appendChild(DescriptionInput);
+
+  const dateInput = document.createElement('input');
+  dateInput.type = 'datetime-local';
+  dateInput.id = 'add-task-date';
+  form.appendChild(dateInput);
 
   const btnSubmit = document.createElement('button');
   btnSubmit.id = 'add-new-task-btn';

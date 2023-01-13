@@ -78,6 +78,14 @@ export class Project {
   addTask(task) {
     this.#tasks.push(task);
   }
+
+  removeTask(id) {
+    this.#tasks.forEach((task, index) => {
+      if (task.id === id) {
+        this.#tasks.splice(index, 1);
+      }
+    });
+  }
 }
 
 export const newProject = (title) => {

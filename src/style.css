@@ -29,8 +29,19 @@ button:hover {
 }
 
 input {
+  color: var(--darkTextColor);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 10px;
   padding: 0 10px;
+  border: none;
+}
+
+textarea {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  resize: none;
+  overflow: auto;
+  border-radius: 10px;
+  padding: 10px;
   border: none;
 }
 
@@ -111,18 +122,20 @@ input {
 }
 
 .task-list li {
-  border-bottom: 2px solid var(--lightAccentColor);
+  height: 40px;
+  border-bottom: 2px solid var(--darkAccentColor);
   padding: 5px 0;
   display: grid;
   grid-template-columns: 20px 1fr;
   grid-template-rows: 1fr 1fr;
   column-gap: 10px;
+  align-items: center;
 }
 
 .task-checkbox {
   grid-column: 1/2;
   grid-row: 1/3;
-  border: 1px solid var(--lightAccentColor);
+  border: 1px solid var(--darkAccentColor);
   width: 20px;
   height: 20px;
   border-radius: 10px;
@@ -132,7 +145,7 @@ input {
 }
 
 .task-checkbox:hover {
-  background-color: rgb(218, 238, 218);
+  background-color: rgb(228, 241, 236);
   border: 1px solid var(--darkAccentColor);
   color: var(--highlightColor);
   cursor: pointer;
@@ -143,7 +156,13 @@ input {
   grid-row: 1/2;
 }
 
+.task-title:hover {
+  cursor: pointer;
+  color: black;
+}
+
 .task-date {
+  color: darkgray;
   font-size: 0.8em;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -181,7 +200,6 @@ input {
   margin-top: -60px;
   margin-left: -200px;
   width: 400px;
-  height: 120px;
   border-radius: 15px;
   background-color: var(--darkAccentColor);
   animation: fadeIn 0.2s;
@@ -189,13 +207,29 @@ input {
   z-index: 100;
 }
 
+.add-project-div {
+  height: 120px;
+}
+
+.add-task-div {
+  height: 350px;
+}
+
 .add-project-div form,
 .add-task-div form {
   display: grid;
   padding: 15px;
-  height: 90px;
-  grid-template-rows: 1fr 1fr;
   gap: 15px;
+}
+
+.add-project-div form {
+  grid-template-rows: 38px 38px;
+  height: 90px;
+}
+
+.add-task-div form {
+  grid-template-rows: 38px auto 38px 38px;
+  height: 320px;
 }
 
 .add-project-div button,
