@@ -43,6 +43,7 @@ export const addTaskButtonEl = (htmlContainer) => {
         .getActiceProjectObject()
         .addTask(newTask(titleInput.value, '', ''));
       displayTaskList();
+      displayProjectlist(projectListItemEl);
       closePopup();
     },
     { once: true },

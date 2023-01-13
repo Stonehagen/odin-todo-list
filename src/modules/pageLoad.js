@@ -44,12 +44,35 @@ export const displayProjectlist = (liEl) => {
       htmlProject.classList.add('active-project');
     }
     htmlProject.id = `project-${project.id}`;
-    htmlProject.innerHTML = project.title;
+    htmlProject.innerHTML = `${project.title} (${project.tasks.length})`;
     liEl(htmlProject);
     htmlProjectList.appendChild(htmlProject);
   });
 
   htmlSidebar.appendChild(htmlProjectList);
+};
+
+export const getTaskHtml = (task) => {
+  const htmlTask = document.createElement('li');
+  htmlTask.classList.add('task');
+  htmlTask.id = `task-${task.id}`;
+
+  const htmlCheckbox = document.createElement('div');
+  htmlCheckbox.classList.add('task-checkbox');
+  htmlCheckbox.innerHTML = '✓';
+  htmlTask.appendChild(htmlCheckbox);
+
+  const htmlTitle = document.createElement('div');
+  htmlTitle.classList.add('task-title');
+  htmlTitle.innerHTML = task.title;
+  htmlTask.appendChild(htmlTitle);
+
+  const htmlDate = document.createElement('div');
+  htmlDate.classList.add('task-date');
+  htmlDate.innerHTML = '01.02.23 - 10:00'; // task.dueDate
+  htmlTask.appendChild(htmlDate);
+
+  return htmlTask;
 };
 
 export const displayTaskList = () => {
@@ -66,11 +89,7 @@ export const displayTaskList = () => {
   htmlTaskList.classList.add('task-list');
 
   project.tasks.forEach((task) => {
-    const htmlTask = document.createElement('li');
-    htmlTask.classList.add('task');
-    htmlTask.id = `task-${task.id}`;
-    htmlTask.innerHTML = task.title;
-    htmlTaskList.appendChild(htmlTask);
+    htmlTaskList.appendChild(getTaskHtml(task));
   });
 
   htmlMain.appendChild(htmlTaskList);

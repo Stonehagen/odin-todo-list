@@ -50,4 +50,6 @@ export default class Task {
   }
 }
 
-export const newTask = (title) => new Task(title, '', '');
+export const newTask = (title, description = '', date = '') =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  new Task(title, description, date);
