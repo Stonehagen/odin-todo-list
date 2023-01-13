@@ -10,9 +10,9 @@ export default class Task {
   #dueDate;
 
   constructor(title, description, dueDate) {
-    this.#title = title;
-    this.#description = description;
-    this.#dueDate = dueDate;
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
     this.#id = Task.#count;
     Task.#incrementCount();
   }
@@ -26,6 +26,10 @@ export default class Task {
   }
 
   set title(title) {
+    if (title === '') {
+      this.#title = 'New Task';
+      return;
+    }
     this.#title = title;
   }
 
