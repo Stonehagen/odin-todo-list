@@ -20,6 +20,8 @@ button {
   border-radius: 10px;
   color: var(--highlightColor);
   border: 2px solid var(--highlightColor);
+  width: 100px;
+  height: 35px;
 }
 
 button:hover {
@@ -99,11 +101,6 @@ textarea {
   align-items: center;
 }
 
-.add-project button {
-  width: 100px;
-  height: 35px;
-}
-
 .main {
   grid-area: main;
   background-color: var(--lightBackgroundColor);
@@ -179,11 +176,6 @@ textarea {
   align-items: center;
 }
 
-.add-task button {
-  width: 100px;
-  height: 35px;
-}
-
 .background-popup {
   position: fixed;
   width: 100%;
@@ -193,7 +185,8 @@ textarea {
 }
 
 .add-project-div,
-.add-task-div {
+.add-task-div,
+.show-task-div {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -204,6 +197,21 @@ textarea {
   animation: fadeIn 0.2s;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4);
   z-index: 100;
+}
+
+.show-task-div {
+  height: 350px;
+  margin-top: -175px;
+  display: grid;
+  padding: 15px;
+  gap: 15px;
+  grid-template-rows: 50px auto 38px 38px;
+  height: 320px;
+}
+
+.show-task-div h2 {
+  padding: 0;
+  margin: 0;
 }
 
 .add-project-div {
@@ -234,8 +242,8 @@ textarea {
 }
 
 .add-project-div button,
-.add-task-div button {
-  width: 100px;
+.add-task-div button,
+#task-close-btn {
   justify-self: end;
 }
 

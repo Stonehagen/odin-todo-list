@@ -5,7 +5,11 @@ import {
   displayTaskList,
 } from './modules/pageLoad';
 import { newProject } from './modules/project';
-import { addEventListerns } from './modules/eventListener';
+import {
+  addEventListerns,
+  removeTaskButtonEl,
+  taskTitleEl,
+} from './modules/eventListener';
 
 const contentContainer = document.querySelector('#content');
 
@@ -14,3 +18,5 @@ newProject('Today');
 displayProjectlist();
 displayTaskList();
 addEventListerns(contentContainer);
+removeTaskButtonEl();
+taskTitleEl(contentContainer);

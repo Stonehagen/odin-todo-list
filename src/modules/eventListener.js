@@ -5,9 +5,29 @@ import {
   displayTaskList,
   closePopup,
   setActiveProject,
+  showTask,
 } from './pageLoad';
 import { projectlist, newProject } from './project';
 import { newTask } from './task';
+
+export const closePopupButtonEl = () => {
+  const btn = document.querySelector('#task-close-btn');
+  btn.addEventListener('click', () => {
+    closePopup();
+  });
+};
+
+export const taskTitleEl = () => {
+  const htmlTaskTitles = document.querySelectorAll('.task-title');
+  htmlTaskTitles.forEach((taskTitle) => {
+    taskTitle.addEventListener('click', (e) => {
+      const taskId = e.target.parentElement.id.split('-')[1];
+      const project = projectlist.getActiceProjectObject();
+      showTask(document.querySelector('#content'), project.getTask(taskId));
+      closePopupButtonEl();
+    });
+  });
+};
 
 export const projectListItemEl = () => {
   const htmlProjects = document.querySelectorAll('.project');
@@ -18,6 +38,7 @@ export const projectListItemEl = () => {
       setActiveProject(projectId);
       displayProjectlist();
       displayTaskList();
+      taskTitleEl();
       projectListItemEl();
     });
   });
@@ -33,6 +54,7 @@ export const removeTaskButtonEl = () => {
       displayTaskList();
       displayProjectlist();
       removeTaskButtonEl();
+      taskTitleEl();
     });
   });
 };
@@ -73,6 +95,7 @@ export const addTaskButtonEl = (htmlContainer) => {
       displayProjectlist();
       projectListItemEl();
       removeTaskButtonEl();
+      taskTitleEl();
       closePopup();
     },
     { once: true },

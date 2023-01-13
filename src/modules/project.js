@@ -86,6 +86,10 @@ export class Project {
       }
     });
   }
+
+  getTask(id) {
+    return this.#tasks.find((task) => task.id === +id);
+  }
 }
 
 export const newProject = (title) => {

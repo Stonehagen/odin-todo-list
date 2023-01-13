@@ -155,6 +155,37 @@ export const showAddTaskForm = (htmlContainer) => {
   htmlContainer.appendChild(backgroundDiv);
 };
 
+export const showTask = (htmlContainer, task) => {
+  const htmlShowTaskDiv = document.createElement('div');
+  htmlShowTaskDiv.classList.add('show-task-div');
+
+  const title = document.createElement('h2');
+  title.classList.add('popup-task-title');
+  title.innerHTML = task.title;
+  htmlShowTaskDiv.appendChild(title);
+
+  const description = document.createElement('p');
+  description.classList.add('popup-task-description');
+  description.innerHTML = task.description;
+  htmlShowTaskDiv.appendChild(description);
+
+  const dueDate = document.createElement('p');
+  dueDate.classList.add('popup-task-duedate');
+  dueDate.innerHTML = task.dueDate;
+  htmlShowTaskDiv.appendChild(dueDate);
+
+  const btnClose = document.createElement('button');
+  btnClose.id = 'task-close-btn';
+  btnClose.innerHTML = 'Close';
+  htmlShowTaskDiv.appendChild(btnClose);
+
+  const backgroundDiv = document.createElement('div');
+  backgroundDiv.classList.add('background-popup');
+  backgroundDiv.appendChild(htmlShowTaskDiv);
+
+  htmlContainer.appendChild(backgroundDiv);
+};
+
 export const closePopup = () => {
   document.querySelector('.background-popup').remove();
 };
