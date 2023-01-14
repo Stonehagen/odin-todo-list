@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { format } from 'date-fns';
+
 export default class Task {
   static #count = 0;
 
@@ -46,7 +49,7 @@ export default class Task {
   }
 
   set dueDate(dueDate) {
-    this.#dueDate = dueDate;
+    this.#dueDate = dueDate === '' ? '' : format(dueDate, 'hh:mm - dd.MM.yyyy');
   }
 
   get dueDate() {

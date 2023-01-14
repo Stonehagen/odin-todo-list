@@ -1,8 +1,17 @@
 export const projectlist = (() => {
-  const projects = [];
+  let projects = [];
   let activeProject = 0;
 
   const getProjects = () => projects;
+
+  const loadProjects = () => {
+    return false;
+  };
+
+  const saveProjects = () => {
+    const string = JSON.stringify(projects);
+    localStorage.projects = string;
+  };
 
   const addProject = (project) => {
     projects.push(project);
@@ -28,6 +37,8 @@ export const projectlist = (() => {
 
   return {
     getProjects,
+    loadProjects,
+    saveProjects,
     addProject,
     removeProject,
     setActiveProject,

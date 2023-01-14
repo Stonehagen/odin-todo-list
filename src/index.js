@@ -4,7 +4,7 @@ import {
   displayProjectlist,
   displayTaskList,
 } from './modules/pageLoad';
-import { newProject } from './modules/project';
+import { projectlist, newProject } from './modules/project';
 import {
   addEventListerns,
   removeTaskButtonEl,
@@ -13,8 +13,10 @@ import {
 
 const contentContainer = document.querySelector('#content');
 
+if (!projectlist.loadProjects()) {
+  newProject('Today');
+}
 loadTemplate(contentContainer);
-newProject('Today');
 displayProjectlist();
 displayTaskList();
 addEventListerns(contentContainer);

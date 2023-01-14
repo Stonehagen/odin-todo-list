@@ -55,6 +55,7 @@ export const removeTaskButtonEl = () => {
       displayProjectlist();
       removeTaskButtonEl();
       taskTitleEl();
+      projectlist.saveProjects();
     });
   });
 };
@@ -70,6 +71,7 @@ export const addProjectButtonEl = (htmlContainer) => {
       displayProjectlist();
       projectListItemEl();
       closePopup();
+      projectlist.saveProjects();
     },
     { once: true },
   );
@@ -85,18 +87,18 @@ export const addTaskButtonEl = (htmlContainer) => {
       const descriptionInput = htmlContainer.querySelector(
         '#add-task-description',
       );
-      const dateInput = htmlContainer.querySelector('#add-task-date');
+      const dateValue = htmlContainer.querySelector('#add-task-date').value;
+      const dateInput = dateValue === '' ? dateValue : new Date(dateValue);
       projectlist
         .getActiceProjectObject()
-        .addTask(
-          newTask(titleInput.value, descriptionInput.value, dateInput.value),
-        );
+        .addTask(newTask(titleInput.value, descriptionInput.value, dateInput));
       displayTaskList();
       displayProjectlist();
       projectListItemEl();
       removeTaskButtonEl();
       taskTitleEl();
       closePopup();
+      projectlist.saveProjects();
     },
     { once: true },
   );
