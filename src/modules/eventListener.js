@@ -29,21 +29,6 @@ export const taskTitleEl = () => {
   });
 };
 
-export const projectListItemEl = () => {
-  const htmlProjects = document.querySelectorAll('.project');
-  htmlProjects.forEach((project) => {
-    project.addEventListener('click', (e) => {
-      const projectId = e.target.id.split('-')[1];
-      projectlist.setActiveProject(projectId);
-      setActiveProject(projectId);
-      displayProjectlist();
-      displayTaskList();
-      taskTitleEl();
-      projectListItemEl();
-    });
-  });
-};
-
 export const removeTaskButtonEl = () => {
   const htmlCheckboxes = document.querySelectorAll('.task-checkbox');
   htmlCheckboxes.forEach((checkbox) => {
@@ -56,9 +41,27 @@ export const removeTaskButtonEl = () => {
       removeTaskButtonEl();
       taskTitleEl();
       projectlist.saveProjects();
+      // eslint-disable-next-line no-use-before-define
+      projectListItemEl();
     });
   });
 };
+
+export function projectListItemEl() {
+  const htmlProjects = document.querySelectorAll('.project');
+  htmlProjects.forEach((project) => {
+    project.addEventListener('click', (e) => {
+      const projectId = e.target.id.split('-')[1];
+      projectlist.setActiveProject(projectId);
+      setActiveProject(projectId);
+      displayProjectlist();
+      displayTaskList();
+      taskTitleEl();
+      projectListItemEl();
+      removeTaskButtonEl();
+    });
+  });
+}
 
 export const addProjectButtonEl = (htmlContainer) => {
   const btn = document.querySelector('#add-new-project-btn');

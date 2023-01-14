@@ -1,12 +1,10 @@
 export const projectlist = (() => {
-  let projects = [];
+  const projects = [];
   let activeProject = 0;
 
   const getProjects = () => projects;
 
-  const loadProjects = () => {
-    return false;
-  };
+  const loadProjects = () => false;
 
   const saveProjects = () => {
     const string = JSON.stringify(projects);
